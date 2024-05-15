@@ -1,24 +1,52 @@
-import logo from './logo.svg';
+import HeaderComponent from './Components/HeaderComponent';
+import BodyComponent from './Components/BodyComponent'
+import GlobalStyle from './Globalstyles';
+import { useState } from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css';
 
+
+
+/*
+const {Catageroy,onChangeCatageroy,onChangeInput,InputValue,Bringsearchdata,setInputValue}=headerdata
+const {searchValue,Catageroy}= BodyData
+ */
+
+
+
 function App() {
+    const [Catageroy, setCatageroy] = useState('General')
+    const [InputValue,setInputValue]= useState('')
+    const [searchValue,setSearchValue]= useState('')
+    const onChangeCatageroy=(cat)=>{
+        setCatageroy(cat)
+
+    }
+    const onChangeInput=(input)=>{
+        setInputValue(input)
+    }
+    const Bringsearchdata=(x)=>{
+        setSearchValue(x)
+    }
+
   return (
+   
+    <Router>
+    <GlobalStyle/>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <HeaderComponent headerdata={{Catageroy,onChangeCatageroy,onChangeInput,InputValue,Bringsearchdata,setInputValue}}/>
+        <Routes>
+        <Route path="/" element={<BodyComponent BodyData={{searchValue,Catageroy}} />} /> 
+        </Routes>
+        
       </header>
     </div>
+
+    </Router>
+    
+   
+    
   );
 }
 
