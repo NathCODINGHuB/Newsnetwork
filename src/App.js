@@ -31,13 +31,13 @@ function App() {
 
   return (
    
-    <Router>
+    <Router basename='/Newsnetwork'>
     <GlobalStyle/>
     <div className="App">
       <header className="App-header">
         <HeaderComponent headerdata={{Catageroy,onChangeCatageroy,onChangeInput,InputValue,Bringsearchdata,setInputValue}}/>
         <Routes>
-        <Route path="/Newsnetwork/" element={<BodyComponent BodyData={{searchValue,Catageroy}} />} /> 
+        <Route path="/" element={<BodyComponent BodyData={{searchValue,Catageroy}} />} /> 
         </Routes>
         
       </header>
